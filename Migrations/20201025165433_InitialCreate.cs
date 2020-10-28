@@ -14,7 +14,8 @@ namespace Books.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true),
                     Author = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Description = table.Column<string>(nullable: true),
+                    ImagePath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

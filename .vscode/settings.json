@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/4eec9e1d-5a5a-4449-a88d-39bb4cdf6198/resourceGroups/itc-d-bl-rg/providers/Microsoft.Web/sites/itc-d-bl-svc",
+    "appService.deploySubpath": "bin\\Release\\netcoreapp3.1\\publish"
+}

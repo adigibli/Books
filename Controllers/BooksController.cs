@@ -24,7 +24,14 @@ namespace Books.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Book>>> GetBook()
         {
-            return await _context.Book.ToListAsync();
+            List<Book> lists = await _context.Book.ToListAsync();
+
+            if (lists == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(lists);
         }
 
         // GET: api/Books/5
@@ -47,30 +54,21 @@ namespace Books.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBook(int id, Book book)
         {
-            if (id != book.Id)
+            var dbBook = await _context.Book.FindAsync(id);
+
+            if (dbBook == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(book).State = EntityState.Modified;
+            dbBook.Title = book.Title;
+            dbBook.Author = book.Author;
+            dbBook.Description = book.Description;
+            dbBook.ImagePath = book.ImagePath;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BookExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(dbBook);
         }
 
         // POST: api/Books
@@ -82,7 +80,7 @@ namespace Books.Controllers
             _context.Book.Add(book);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBook", new { id = book.Id }, book);
+            return Ok(_context.Book);
         }
 
         // DELETE: api/Books/5
@@ -98,7 +96,7 @@ namespace Books.Controllers
             _context.Book.Remove(book);
             await _context.SaveChangesAsync();
 
-            return book;
+            return Ok(_context.Book);
         }
 
         private bool BookExists(int id)

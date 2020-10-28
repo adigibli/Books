@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/itc-d-bl-sql/databases/books",
+      "type": "mssql.azure",
+      "connectionId": "BooksContext",
+      "secretStore": "AzureAppSettings"
+    },
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/itcpblstg",
+      "type": "storage.azure",
+      "connectionId": "itc-p-bl-stg",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
