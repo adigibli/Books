@@ -80,7 +80,7 @@ namespace Books.Controllers
             _context.Book.Add(book);
             await _context.SaveChangesAsync();
 
-            return Ok(_context.Book);
+            return Ok(book);
         }
 
         // DELETE: api/Books/5
