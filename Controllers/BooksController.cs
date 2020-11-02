@@ -63,6 +63,8 @@ namespace Books.Controllers
 
             dbBook.Title = book.Title;
             dbBook.Author = book.Author;
+            dbBook.PublicationDate = book.PublicationDate;
+            dbBook.Pages = book.Pages;
             dbBook.Description = book.Description;
             dbBook.ImagePath = book.ImagePath;
 
@@ -75,7 +77,7 @@ namespace Books.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Book>> PostBook(Book book)
+        public async Task<ActionResult<Book>> PostBook( Book book)
         {
             _context.Book.Add(book);
             await _context.SaveChangesAsync();
