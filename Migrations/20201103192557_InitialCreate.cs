@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Books.Migrations
 {
@@ -14,6 +15,8 @@ namespace Books.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true),
                     Author = table.Column<string>(nullable: true),
+                    PublicationDate = table.Column<DateTime>(nullable: false),
+                    Pages = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     ImagePath = table.Column<string>(nullable: true)
                 },

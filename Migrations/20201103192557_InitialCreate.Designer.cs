@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Books.Migrations
 {
     [DbContext(typeof(BooksContext))]
-    [Migration("20201101151525_fieldsAddition")]
-    partial class fieldsAddition
+    [Migration("20201103192557_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
